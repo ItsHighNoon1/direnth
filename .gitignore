@@ -1,5 +1,8 @@
 obj/
 .vscode/
 
+res/*
+!res/shader/
+
 direnth
 compile_flags.txt

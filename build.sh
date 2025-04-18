@@ -17,9 +17,10 @@ for source in "${source_files[@]}"; do
         echo need to build $source
         dir="${object%/*}"
         mkdir -p $dir
+        # glfw, stb, cglm all live in my /usr/include
         $GCC -g -c -o "$object" "src/$source" -I./include -I./src
     fi
 done
 
 # link
-$GCC -lglfw -lGL -o "$OUTPUT" $(IFS=$'\n'; echo "${object_files[*]}") 
+$GCC -lglfw -lGL -lX11 -lpthread -lXrandr -lXi -ldl -lm -o "$OUTPUT" $(IFS=$'\n'; echo "${object_files[*]}") 
